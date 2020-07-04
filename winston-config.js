@@ -5,7 +5,7 @@ const DEFAULT_CATEGORY = "ZOHO";
 var winstonOptions = {
   file: {
     level: "info",
-    filename: "app.log",
+    filename: "zoho.log",
     handleExceptions: true,
     json: false,
     maxsize: 5242880, // 5MB
@@ -42,4 +42,5 @@ function createLoggerConfig(category) {
 }
 winston.loggers.add(DEFAULT_CATEGORY, createLoggerConfig(DEFAULT_CATEGORY));
 
-export const defaultLogger = winston.loggers.get(DEFAULT_CATEGORY);
+const defaultLogger = winston.loggers.get(DEFAULT_CATEGORY);
+export default defaultLogger;

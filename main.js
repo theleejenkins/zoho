@@ -1,7 +1,7 @@
 import request from "request-promise-native";
 
-// import { sendEmail } from "./eMail.js";
-import { defaultLogger } from "./winston-config.js";
+import { sendEmail } from "./eMail.js";
+import defaultLogger from "./winston-config.js";
 import { updateAgent } from "./updateAgent.js";
 import {
   standbyRosterUrl,
@@ -114,7 +114,7 @@ async function makeRequest() {
 async function main() {
   defaultLogger.info("[main]: Program start.");
   await makeRequest().catch((error) => defaultLogger.error(error));
-  // sendEmail(to, from, subject, body);
+  sendEmail(to, from, subject, body);
   defaultLogger.info("[main]: Program End.");
 }
 

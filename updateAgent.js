@@ -1,6 +1,6 @@
 import request from "request-promise-native";
 
-import { defaultLogger } from "./winston-config.js";
+import defaultLogger from "./winston-config.js";
 import { options } from "./main.js";
 import { updateAgentUrl } from "./params.js";
 
