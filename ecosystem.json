@@ -2,8 +2,8 @@
   "apps": [{
     "name": "zoho",
     "script": "main.js",
-    "autorestart": "false",
-    "watch": "false",
+    "autorestart": false,
+    "watch": false,
     "env_production": {
       "NODE_ENV": "production"
     }
@@ -16,7 +16,7 @@
       "repo": "https://github.com/theleejenkins/zoho.git",
       "path": "/home/nodejs/deploy",
       "pre-deploy-local": "scp .env token.json credentials.json nodejs@ec2-52-3-66-103.compute-1.amazonaws.com:/home/nodejs/deploy/current",
-      "post-deploy": "cp /home/nodejs/.env /home/nodejs/credentials.json /home/nodejs/token.json ./ && yarn && pm2 startOrRestart ecosystem.json --env production"
+      "post-deploy": "yarn && pm2 startOrRestart ecosystem.json --env production"
     }
   }
 }
