@@ -48,12 +48,14 @@ async function makeRequest() {
     // get records from body
     var records = response.body.records;
 
-    defaultLogger.info(`[main]: Current Date: ${currentDate}`);
+    defaultLogger.info(`[main]       : Current Date: ${currentDate}`);
 
     // get the correct record for today's date (a Monday)
     const standbyRecord = records.filter(
       (datum) => datum["Start (8:00 am)"] === currentDate
     );
+
+    if (standbyRecord.length == 0) throw new Error("No Standby date match");
 
     // Grab first array element, and then the first string element
     var infraStandby = standbyRecord[0]["1st Standby Infrastructure"].split(
@@ -106,16 +108,21 @@ async function makeRequest() {
     body += `</body>`;
     body += `</html>`;
   } catch (error) {
+    throw new Error(error.message);
     defaultLogger.error(`[main]: ${error}`);
   }
 }
 
 // main
 async function main() {
-  defaultLogger.info("[main]: Program start.");
-  await makeRequest().catch((error) => defaultLogger.error(error));
-  sendEmail(to, from, subject, body);
-  defaultLogger.info("[main]: Program End.");
+  defaultLogger.info("[main]       : Program start.");
+  try {
+    await makeRequest();
+    await sendEmail(to, from, subject, body);
+    defaultLogger.info("[main]       : Program End.");
+  } catch (error) {
+    defaultLogger.error(error);
+  }
 }
 
 main();

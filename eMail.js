@@ -28,7 +28,6 @@ export async function sendEmail(from, to, subject, body) {
     .replace(/\//g, "_")
     .replace(/=+$/, "");
 
-  defaultLogger.info(`[eMail]: Sending email To: ${to}`);
   try {
     const res = await gmail.users.messages.send({
       userId: "me",
@@ -36,7 +35,8 @@ export async function sendEmail(from, to, subject, body) {
         raw: encodedMessage,
       },
     });
-    defaultLogger.info(`[eMail]: Email sent: ${res.statusText}:${res.status}`);
+    defaultLogger.info(`[eMail]      : Sent email To: ${to}`);
+    // defaultLogger.info(`[eMail]: Email sent: ${res.statusText}:${res.status}`);
   } catch (error) {
     defaultLogger.error(`[eMail]: ${error}`);
   }
