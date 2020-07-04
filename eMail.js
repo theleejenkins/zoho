@@ -37,26 +37,7 @@ export async function sendEmail(from, to, subject, body) {
       },
     });
     defaultLogger.info(`[eMail]: Email sent: ${res.statusText}:${res.status}`);
-  } catch (err) {
+  } catch (error) {
     defaultLogger.error(`[eMail]: ${error}`);
   }
 }
-
-// var body = "";
-// body += "<html><body>";
-// body += "<table width='100%'><tr><td>"; // Outer table
-// body += "<table width='60%'>"; // Nested table
-// body +=
-//   "<tr><td width='70%'>This is a row</td><td width='30%'>999999</td></tr>";
-// body += "<tr><td width='70%'>So is this</td><td width='30%'>9999</td></tr>";
-// body += "</table>";
-// body += "</td></tr></table>";
-// body += "</body></html>";
-
-// sendEmail(
-//   "Lee Jenkins <lee.jenkins@ets.group>",
-//   "Lee Jenkins <lee.jenkins@blacktusk.co.za>; \
-//   Lee Jenkins <lee.jenkins@ets.group>",
-//   "So... Hello!🤘❤️😎",
-//   body
-// );

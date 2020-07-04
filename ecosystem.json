@@ -1,0 +1,20 @@
+{
+  "apps": [{
+    "name": "zoho",
+    "script": "main.js",
+    "env_production": {
+      "NODE_ENV": "production"
+    }
+  }],
+  "deploy": {
+    "production": {
+      "user": "nodejs",
+      "host": "ec2-52-3-66-103.compute-1.amazonaws.com",
+      "ref": "origin/master",
+      "repo": "https://github.com/theleejenkins/zoho.git",
+      "path": "/home/nodejs/deploy",
+      "pre-setup": "sudo yum install -y git",
+      "post-deploy": "cp /home/nodejs/.env /home/nodejs/credentials.json /home/nodejs/token.json ./ && yarn && pm2 startOrRestart ecosystem.json --env production"
+    }
+  }
+}
