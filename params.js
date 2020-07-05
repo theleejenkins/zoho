@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 const result = dotenv.config({ silent: process.env.NODE_ENV === "production" });
 
 if (result.error) {
-  throw result.error;
+  throw new Error(result.error);
 }
 
 export const standbyRosterUrl = `https://sheet.zoho.com/api/v2/${process.env.STANDBYROSTER}`;
