@@ -118,7 +118,7 @@ async function main() {
   defaultLogger.info("[main]       : Program start.");
   try {
     await makeRequest();
-    await sendEmail(to, from, subject, body);
+    await sendEmail(from, to, subject, body);
     defaultLogger.info("[main]       : Program End.");
   } catch (error) {
     defaultLogger.error(error);
