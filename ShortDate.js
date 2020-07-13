@@ -21,7 +21,7 @@ Date.prototype.toShortFormat = function () {
 
   let year = this.getFullYear();
 
-  return `${day}-${monthName}-${year}`;
+  return `${day} ${monthName} ${year}`;
 };
 
 export default Date.prototype.toShortFormat;
