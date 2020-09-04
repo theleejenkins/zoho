@@ -11,11 +11,11 @@
   "deploy": {
     "production": {
       "user": "nodejs",
-      "host": "ec2-52-3-66-103.compute-1.amazonaws.com",
+      "host": "130.61.82.73",
       "ref": "origin/master",
       "repo": "https://github.com/theleejenkins/zoho.git",
-      "path": "/home/nodejs/deploy",
-      "pre-deploy-local": "scp .env token.json credentials.json nodejs@ec2-52-3-66-103.compute-1.amazonaws.com:/home/nodejs/deploy/current",
+      "path": "/home/nodejs/pm2/zoho",
+      "pre-deploy-local": "scp .env token.json credentials.json nodejs@130.61.82.73:/home/nodejs/pm2/zoho/current",
       "post-deploy": "yarn && pm2 startOrRestart ecosystem.json --env production"
     }
   }

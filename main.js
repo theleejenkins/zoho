@@ -17,7 +17,7 @@ var body = "";
 
 // get current date in 'DD Mon YYYY' format
 var currentDate = new Date().toShortFormat();
-currentDate = "29 Jun 2020";
+//currentDate = "29 Jun 2020";
 
 export var options = {
   method: "",
