@@ -55,6 +55,8 @@ async function makeRequest() {
       (datum) => datum["Start (8:00 am)"] === currentDate
     );
 
+//    defaultLogger.info(`[main]       : standbyRecord: ${JSON.stringify(standbyRecord)}`);
+
     if (standbyRecord.length == 0) throw new Error("No Standby date match");
 
     // Grab first array element, and then the first string element
@@ -64,6 +66,9 @@ async function makeRequest() {
     var softwareStandby = standbyRecord[0]["1st Standby Software"].split(
       " "
     )[0];
+
+    if (infraStandby.length == 0) throw new Error("No Standby data");
+
     // Setup a call to get Standby records from Standby Spreadsheet
     Object.assign(options, { method: "GET", url: getAgentsUrl });
 
